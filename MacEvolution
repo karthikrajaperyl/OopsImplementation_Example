@@ -1,0 +1,115 @@
+import java.util.*;
+interface Laptop
+{
+	void setReleaseName();
+	void showReleaseName();
+	void showReleaseDate();
+	void showVersion();
+}
+interface LaptopFeatures extends Laptop
+{
+	//void showRamSpeed();
+	void showStorage();
+}
+abstract class MacBook implements Laptop,LaptopFeatures
+{
+	private String name;
+	MacBook()
+	{
+		setBrandName();
+	}
+	public void setBrandName()
+	{
+		this.name=this.getClass().getName();
+	}
+	public void showBrandName()
+	{
+		System.out.println(name);
+	}
+}
+class Montery extends MacBook
+{
+	private String name;
+	Montery()
+	{
+		this.setReleaseName();
+	}
+	public void setReleaseName()
+	{
+		this.name=this.getClass().getName();
+	}
+	public void showReleaseName()
+	{
+		System.out.println(name);
+	}
+	public void showReleaseDate()
+	{
+		System.out.println("October 25, 2021");
+	}
+	public void showVersion()
+	{
+		System.out.println("MacOs 12");
+	}
+	public void showStorage() {
+		System.out.println("64GB");
+	}
+}
+class Ventura implements Laptop
+{
+	private String name;
+	private String featurePreview;
+	Ventura()
+	{
+		this.setReleaseName();
+	}
+	Ventura(String name,String featurePreview)
+	{
+		this.name=name;
+		this.featurePreview=featurePreview;
+	}
+	public void setReleaseName()
+	{
+		this.name=this.getClass().getName();
+	}
+	public void showReleaseName()
+	{
+		System.out.println(name);
+	}
+	public void showReleaseDate()
+	{
+		System.out.println("Will Anounced Soon");
+	}
+	public void showVersion()
+	{
+		System.out.println("MacOs 13");
+	}
+	public String getFeaturePreview()
+	{
+		return this.featurePreview;
+	}
+	@Override
+	public String toString()
+	{
+		return "Name-"+this.name+"Feature-Preview-"+this.featurePreview;
+	}
+}
+class MacEvolution
+{
+	public static void main(String[] args)
+	{
+		List<Laptop> laptopList=new ArrayList<>();
+		laptopList.add(new Montery());
+		laptopList.add(new Ventura());
+		for(Laptop iterList:laptopList)
+		{
+			System.out.print("Release-Name:");
+			iterList.showReleaseName();
+			System.out.print("Version-Name:");
+			iterList.showVersion();
+			System.out.print("Release-Date:");
+			iterList.showReleaseDate();
+		}
+		Ventura laptopObj=new Ventura("ventura","Dynamic Storage");
+		System.out.println(laptopObj.toString());
+	}
+}
