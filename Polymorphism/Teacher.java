@@ -3,6 +3,7 @@ import java.util.Arrays;
 import oops_Implementation.Person;
 import oops_Implementation.Person.Gender;
 
+
 class TeacherDetails extends Person {
 		private String subjectName;
 		private int experienceYear;
@@ -48,16 +49,18 @@ class TeacherDetails extends Person {
 		//Scanner scannerObj=new Scanner(System.in);
 		//String name=scannerObj.nextLine();
 		String[] subject=new String[] {"Maths","Computer Science"};
-		TeacherDetails teacherObj=new TeacherDetails();
+		Person teacherObj=new TeacherDetails();
 		teacherObj.setName("xyz");
 		teacherObj.setGender(Gender.Male);
 		teacherObj.setBloodGroup("B+ve");
-		teacherObj.setSubject("Maths");
-		teacherObj.setSubject(subject);
-		teacherObj.setExperienceYear(2);
-		System.out.println(teacherObj.Teach());
-		System.out.println(teacherObj.Teach(subject));
+		TeacherDetails teacherObj1=(TeacherDetails)teacherObj;
+		teacherObj1.setSubject("Maths");
+		teacherObj1.setSubject(subject);
+		teacherObj1.setExperienceYear(2);
+		System.out.println(teacherObj1.Teach());
+		System.out.println(teacherObj1.Teach(subject));
 		System.out.println(teacherObj.toString());
+		teacherObj.showWork();
 		
 	}
 	}
